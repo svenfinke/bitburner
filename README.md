@@ -1,5 +1,7 @@
 # bitburner
 
+Inspired by https://github.com/moriakaice/bitburner
+
 ```
 export async function main(ns) {
   if (ns.getHostname() !== "home") {
@@ -7,9 +9,9 @@ export async function main(ns) {
   }
 
   await ns.wget(
-    `https://raw.githubusercontent.com/svenfinke/bitburner/master/src/initHacking.ns?ts=${new Date().getTime()}`,
-    "initHacking.ns"
+    `https://raw.githubusercontent.com/svenfinke/bitburner/main/src/initHacking.js?ts=${new Date().getTime()}`,
+    "initHacking.js"
   );
-  ns.spawn("initHacking.ns", 1);
+  ns.spawn("initHacking.js", 1);
 }
 ```
