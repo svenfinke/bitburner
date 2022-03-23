@@ -1,20 +1,11 @@
 const baseUrl = 'https://raw.githubusercontent.com/svenfinke/bitburner/main/src/'
 const filesToDownload = [
-  'common.js'
+  'batch_script.js',
+  'compromise.js',
 ]
-const valuesToRemove = ['BB_SERVER_MAP']
 
-function localeHHMMSS(ms = 0) {
-  if (!ms) {
-    ms = new Date().getTime()
-  }
-
-  return new Date(ms).toLocaleTimeString()
-}
-
+/** @param {NS} ns **/
 export async function main(ns) {
-  ns.tprint(`[${localeHHMMSS()}] Starting initHacking.ns`)
-
   let hostname = ns.getHostname()
 
   if (hostname !== 'home') {
@@ -30,9 +21,4 @@ export async function main(ns) {
     ns.tprint(`[${localeHHMMSS()}] Trying to download ${path}`)
     await ns.wget(path + '?ts=' + new Date().getTime(), filename)
   }
-
-  valuesToRemove.map((value) => localStorage.removeItem(value))
-
-//   ns.tprint(`[${localeHHMMSS()}] Spawning killAll.ns`)
-//   ns.spawn('killAll.ns', 1, 'runHacking.ns')
 }
