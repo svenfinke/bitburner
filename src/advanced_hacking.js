@@ -5,13 +5,14 @@ export async function main(ns) {
 	if (target == undefined) throw new Error("You must pass a target.");
 	
 	while(true){
+		ns.print(`Timestamp: ${new Date().toLocaleTimeString()}`);
 		let securityLevel = ns.getServerSecurityLevel(target);
 		let minimalSecurityLevel = ns.getServerMinSecurityLevel(target);
-		let securityThreshold = minimalSecurityLevel * 3;
+		let securityThreshold = minimalSecurityLevel * 2;
 
 		let moneyAvailable = ns.getServerMoneyAvailable(target);
 		let maxMoneyAvailable = ns.getServerMaxMoney(target);
-		let moneyThreshold = maxMoneyAvailable * 0.1;
+		let moneyThreshold = maxMoneyAvailable * 0.9;
 
 		if (ns.getServerRequiredHackingLevel(target) > ns.getHackingLevel()) {
 			securityThreshold = minimalSecurityLevel * 2; // Lower the threshold for security

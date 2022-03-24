@@ -1,10 +1,10 @@
 /** @param {NS} ns **/
 export async function main(ns) {
 	// Upgrade hacknet nodes.
-	let targetRam = 16;
-	let targetLevel = 100;
-	let targetNodeCount = 6;
-	let targetCores = 4;
+	let targetRam = 64;
+	let targetLevel = 150;
+	let targetNodeCount = 8;
+	let targetCores = 10;
 
 	let allDone = true;
 
@@ -40,6 +40,6 @@ export async function main(ns) {
 		}
 		
 		if (allDone) break;
-		await ns.sleep(10000);
+		await ns.sleep(1000);
 	}
 }

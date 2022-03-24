@@ -22,7 +22,9 @@ export async function main(ns) {
 		if (threadCount >= 1) {
 			await ns.scp(scriptname, server);
 			ns.exec(scriptname, hostname, threadCount, server);
-			await ns.sleep(500);
+			while (ns.scriptRunning(scriptname, server)) {
+				await ns.sleep(500);
+			}
 		}
 	}
 }

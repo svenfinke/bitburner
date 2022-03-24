@@ -5,7 +5,8 @@ export async function main(ns) {
 	let scriptnames = [
 		"compromise.js",
 		"worm.js",
-		"basic_hack.js"
+		"basic_hack.js",
+		"weaken_and_grow.js"
 	];
 	let hostname = ns.getHostname();
 	let visited_servers = ns.args[0] == undefined ? [] : ns.args[0].split('.');
@@ -36,11 +37,11 @@ export async function main(ns) {
 
 		// 5. Run as many hack jobs as possible
 		let ramAvailable = ns.getServerMaxRam(target) - ns.getServerUsedRam(target);
-		let scriptRam = ns.getScriptRam("basic_hack.js");
+		let scriptRam = ns.getScriptRam("weaken_and_grow.js");
 		let threadCount = Math.floor(ramAvailable / scriptRam);
 		
 		if (threadCount >= 1) {
-			ns.exec("basic_hack.js", target, threadCount, target);
+			ns.exec("weaken_and_grow.js", target, threadCount, target);
 		}
 		await ns.sleep(500);
 	}
