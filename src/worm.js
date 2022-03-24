@@ -8,8 +8,21 @@ export async function main(ns) {
 		"basic_hack.js",
 		"weaken_and_grow.js"
 	];
+	let ignored_servers = [
+		"privsrv",
+		"privsrv-0",
+		"privsrv-1",
+		"privsrv-2",
+		"privsrv-3",
+		"privsrv-4",
+		"privsrv-5",
+		"privsrv-6",
+		"privsrv-7",
+		"privsrv-8",
+		"privsrv-9"
+	];
 	let hostname = ns.getHostname();
-	let visited_servers = ns.args[0] == undefined ? [] : ns.args[0].split('.');
+	let visited_servers = ns.args[0] == undefined ? ignored_servers : ns.args[0].split('.');
 	visited_servers.push(hostname);
 
 	ns.print(visited_servers);
